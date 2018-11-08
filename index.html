@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('input[type="checkbox"]').on('change', function() {calculateResult()});
+                calculateResult();
+            });
+            function calculateResult() {
+                var total = 0;
+                $('tbody tr').each(function(){
+                    var subtotal = 0;
+                    var $row = $(this);
+                    var price = parseInt($row.find('input[type="number"]').val());
+                    $row.find('input[type="checkbox"]').each(function(){
+                        console.log('clicj');
+                        if($(this).is(':checked')) {
+                            subtotal+=price;
+                        };
+                    });
+                    $row.find('.subtotal').html(subtotal);
+                    total+=subtotal;
+                });
+                $('.total').html(total);
+            }
+        </script>
+    </head>
+    <body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Guy</th>
+                    <th>$/dia</th>
+                    <th>L</th>
+                    <th>M</th>
+                    <th>M</th>
+                    <th>J</th>
+                    <th>V</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Chopo</td>
+                <td><input type="number" value="1000" /></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td class="subtotal">1000</td>
+            </tr>
+            <tr>
+                <td>Javier</td>
+                <td><input type="number" value="600" /></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td class="subtotal">2400</td>
+            </tr>
+            <tr>
+                <td>Keko</td>
+                <td><input type="number" value="600" /></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td><input type="checkbox" checked/></td>
+                <td class="subtotal">2400</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="total">11.000</td>
+            </tr>
+        </table>
+    </body>
+</html>
